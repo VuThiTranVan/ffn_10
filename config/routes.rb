@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   resources :account_activations, only: :edit
   resources :password_resets, except: :destroy
-  resources :profiles, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update]
   resources :football_news, only: [:index, :show]
   resources :comment, only: :create
   resources :score_bets, only: :create

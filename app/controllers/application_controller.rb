@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :load_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from ActiveRecord::RecordNotFound, with: :not_found?
+  rescue_from CanCan::AccessDenied, with: :access_denied!
 
   def load_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -24,8 +25,19 @@ class ApplicationController < ActionController::Base
     resource.admin? ? admin_root_path : root_path
   end
 
+  def access_denied!
+    respond_to do |format|
+      format.html do
+        redirect_to root_path, flash: {danger: t("not_authorized")}
+      end
+      format.json do
+        render json: {message: t("not_authorized"), type: Settings.error}
+      end
+    end
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: User::USER_PARAMS)
-    devise_parameter_sanitizer.permit(:update_account, keys: User::USER_PARAMS)
+    devise_parameter_sanitizer.permit(:account_update, keys: User::USER_PARAMS)
   end
 end

@@ -1401,6 +1401,9 @@ tbody>tr .bg_scored {
 .news_left {
   padding: 0 10px;
 }
+.news_left>p {
+  color: $whites;
+}
 .news_left>a {
   color: $orange;
   font-size: 18px;
@@ -1415,7 +1418,7 @@ a.highlights {
   font-weight: bold;
 }
 .date_post {
-  color: #B8860B;
+  color: $light!important;
 }
 .new_text {
   font-size: 15px;
