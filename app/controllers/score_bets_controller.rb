@@ -1,6 +1,6 @@
 class ScoreBetsController < ApplicationController
   def create
-    if logged_in?
+    if user_signed_in?
       @bet_amount = params[:price]
       @sugest = ScoreSugest.find params[:sugest_id]
       if params[:price].to_f <= current_user.money.to_f

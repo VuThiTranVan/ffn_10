@@ -2,7 +2,8 @@ class Admin::TeamsController < Admin::BaseController
   before_action :load_team, except: %i(index new create)
 
   def index
-    @teams = Team.newest.page(params[:page]).per(Settings.team_per)
+    @search = Team.newest.ransack params[:q]
+    @teams = @search.result.page(params[:page]).per(Settings.team_per)
   end
 
   def new

@@ -78,3 +78,6 @@ en:
         close: "Close"
         submit: "Save Changes"
         blank_option: "Select Teams"
+      search:
+        search_form: "Enter your search team name..."
+        btn_search: "Search"

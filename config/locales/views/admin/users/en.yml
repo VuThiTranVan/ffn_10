@@ -31,3 +31,6 @@ en:
         money: "Money"
         money_unit: "$"
         submit: "Save Changes"
+      search:
+        search_form: "Enter your name or email..."
+        btn_search: "Search"

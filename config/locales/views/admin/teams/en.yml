@@ -57,3 +57,6 @@ en:
         dob: "Date of Birth"
         number: "Number"
         create_player: "Create Player"
+      search:
+        search_form: "Enter your name or address..."
+        btn_search: "Search"

@@ -2,7 +2,8 @@ class Admin::MatchesController < Admin::BaseController
   before_action :load_match, only: %i(edit update destroy load_infos)
 
   def index
-    @matches = Match.newest.page(params[:page]).per Settings.match_per
+    @search = Match.newest.ransack params[:q]
+    @matches = @search.result.page(params[:page]).per(Settings.match_per)
   end
 
   def new

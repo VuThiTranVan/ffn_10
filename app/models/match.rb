@@ -14,7 +14,7 @@ class Match < ApplicationRecord
   validates :round_id, presence: true
 
   scope :newest, ->{order date_of_match: :desc}
-  scope :ranger_date, (lambda do
+  scope :date_match, (lambda do
     where("date_of_match <= ?", Date.today + Settings.day.days)
   end)
 

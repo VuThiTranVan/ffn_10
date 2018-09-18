@@ -40,4 +40,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: User::USER_PARAMS)
     devise_parameter_sanitizer.permit(:account_update, keys: User::USER_PARAMS)
   end
+
+  def logged_in_user
+    return if user_signed_in?
+    flash[:danger] = t "notice.require_login"
+    redirect_to new_user_session_path
+  end
 end

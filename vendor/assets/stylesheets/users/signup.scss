@@ -175,10 +175,17 @@ h2 {
 .remember_me {
   color: $whites;
 }
-.alert {
-  color: $reds!important;
-  font-size: 18px!important;
-  font-weight: bold!important;
+.cancel {
+  padding: 15px;
+}
+.btn_cancel {
+  float: left;
+}
+.cancel {
+  padding: 15px;
+}
+.btn_cancel {
+  float: left;
 }
 .cancel {
   padding: 15px;

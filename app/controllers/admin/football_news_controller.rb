@@ -2,8 +2,9 @@ class Admin::FootballNewsController < Admin::BaseController
   before_action :load_football_new, except: %i(index new create)
 
   def index
+    @search = FootballNew.newest.ransack params[:q]
     @football_news =
-      FootballNew.newest.page(params[:page]).per(Settings.football_new_per)
+      @search.result.page(params[:page]).per(Settings.football_new_per)
   end
 
   def show; end
