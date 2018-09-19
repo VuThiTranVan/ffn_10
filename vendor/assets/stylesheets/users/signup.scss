@@ -1,3 +1,5 @@
+@import 'home/colors';
+
 /*-----Background-----*/
 body{
    background: image-url('users/bg.jpg') no-repeat;
@@ -164,4 +166,17 @@ p{
 /*------------Password_reset---------*/
 div#reset_pass {
   padding: 10px;
+}
+h2 {
+  color: $reds;
+  font-size: 15px;
+  font-weight: bold;
+}
+.remember_me {
+  color: $whites;
+}
+.alert {
+  color: $reds!important;
+  font-size: 18px!important;
+  font-weight: bold!important;
 }
