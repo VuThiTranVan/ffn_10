@@ -1,7 +1,8 @@
-class ProfilesController < ApplicationController
+class UsersController < ApplicationController
   layout "home"
 
   before_action :load_user, only: %i(show edit update)
+  load_and_authorize_resource
 
   def show
     @score_bets = current_user.score_bets
@@ -15,9 +16,10 @@ class ProfilesController < ApplicationController
   def update
     if @user.update_attributes user_params
       sign_in @user, bypass: true
-      flash[:success] = t(".update_user")
-      redirect_to profile_path
+      flash[:success] = t ".success_update"
+      redirect_to user_path
     else
+      flash[:danger] = t ".fails_update"
       render "users/edit"
     end
   end
@@ -29,7 +31,7 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit :fullname,
-      :email, :gender, :password, :password_confirmation
+    params.require(:user).permit :fullname, :email, :gender,
+      :password
   end
 end

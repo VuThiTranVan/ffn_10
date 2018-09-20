@@ -1,7 +1,7 @@
 <div class="container">
   <header class="heading"><%= t ".header" %></header><hr></hr>
   <div class="span3">
-    <%= form_for @user, url: profile_path do |f| %>
+    <%= form_for @user, url: user_path do |f| %>
     <%= render "shared/error_messages", class: "error_edit" %>
     <div class="row">
       <div class="col-md-4">
