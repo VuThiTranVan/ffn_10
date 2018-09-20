@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   namespace :admin do
     root "dashboard#index"
     resources :football_news
@@ -37,11 +38,11 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  get "/signup", to: "users#signup"
-  post "/signup", to: "users#create"
-  get "/login", to: "sessions#login"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+  # get "/signup", to: "users#signup"
+  # post "/signup", to: "users#create"
+  # get "/login", to: "sessions#login"
+  # post "/login", to: "sessions#create"
+  # delete "/logout", to: "sessions#destroy"
   post "upload_image" => "upload_froala#upload_image_froala", as: :upload_image
 
   resources :account_activations, only: :edit

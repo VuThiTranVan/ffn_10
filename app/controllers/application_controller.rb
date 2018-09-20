@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
-  include SessionsHelper
+  include KaminariHelper
+  layout :load_layout_devise
   protect_from_forgery with: :exception
   before_action :load_locale
+  before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from ActiveRecord::RecordNotFound, with: :not_found?
 
   def load_locale
@@ -14,14 +16,16 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def logged_in_user
-    return if logged_in?
-    store_location
-    flash[:danger] = t "notice.require_login"
-    redirect_to login_path
+  def load_layout_devise
+    "users" if devise_controller?
   end
 
-  def correct_user
-    redirect_to login_path unless current_user.present?
+  def after_sign_in_path_for resource
+    resource.admin? ? admin_root_path : root_path
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: User::USER_PARAMS)
+    devise_parameter_sanitizer.permit(:update_account, keys: User::USER_PARAMS)
   end
 end
