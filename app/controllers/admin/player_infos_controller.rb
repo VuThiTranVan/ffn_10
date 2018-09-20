@@ -2,7 +2,8 @@ class Admin::PlayerInfosController < Admin::BaseController
   before_action :load_player, except: %i(index new create)
 
   def index
-    @players = PlayerInfo.newest.page(params[:page]).per Settings.player_per
+    @search = PlayerInfo.newest.ransack params[:q]
+    @players = @search.result.page(params[:page]).per Settings.player_per
   end
 
   def new

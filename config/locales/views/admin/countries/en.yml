@@ -21,3 +21,6 @@ en:
         name: "Name"
         continent: "Continent"
         submit: "Save Changes"
+      search:
+        search_form: "Enter your countries..."
+        btn_search: "Search"

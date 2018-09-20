@@ -2,7 +2,8 @@ class Admin::LeaguesController < Admin::BaseController
   before_action :load_league, except: %i(index new create)
 
   def index
-    @leagues = League.newest.page(params[:page]).per(Settings.league_per)
+    @search = League.newest.ransack params[:q]
+    @leagues = @search.result.page(params[:page]).per(Settings.league_per)
   end
 
   def show; end

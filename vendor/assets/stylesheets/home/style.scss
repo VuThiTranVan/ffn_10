@@ -1451,9 +1451,10 @@ form>h5 {
   font-weight: bold;
 }
 .title_show {
-  color: $orange;
+  color: $orange!important;
   font-size: 25px;
   font-weight: bold;
+  text-align: center;
 }
 .comment_right>h4 {
   font-size: 15px;
@@ -1563,7 +1564,7 @@ table th {
   width: 100%;
 }
 .left_impo {
-  margin-left: -318px !important;
+  margin-left: -304px !important;
   width: 30.6%;
 }
 .dropdown-content {
@@ -1576,7 +1577,14 @@ table th {
   margin-left: -410px !important;
   width: 37%;
 }
-
+#myBets {
+  border-radius: 5px;
+  font-weight: bold;
+}
+#info {
+  border-radius: 5px;
+  font-weight: bold;
+}
 /*-------------------Teams--------------------*/
 .card{
    background-color: $white_gray;
@@ -1649,6 +1657,7 @@ table th {
 .ranking {
   background: $reds;
   width: 200px;
+  color: $whites;
 }
 
 .minute_blink {

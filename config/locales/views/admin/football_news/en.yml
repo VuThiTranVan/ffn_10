@@ -24,3 +24,6 @@ en:
         image: "Image"
         image_upload: "Upload Images"
         submit: "Save Changes"
+      search:
+        search_form: "Enter your title..."
+        btn_search: "Search"

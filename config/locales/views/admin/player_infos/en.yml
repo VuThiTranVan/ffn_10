@@ -34,3 +34,6 @@ en:
         edit: "Edit"
         remove: "Remove"
         are_you_sure: "Are you sure?"
+      search:
+        search_form: "Enter your search name..."
+        btn_search: "Search"

@@ -22,7 +22,7 @@ en:
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Verify Account!"
         welcome: "Welcome"
         comfirmation_account: "You can confirm your account email through the link below:"
         link_activated: "Confirm my account"

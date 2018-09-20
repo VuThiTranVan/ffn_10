@@ -2,7 +2,8 @@ class Admin::UsersController < Admin::BaseController
   before_action :load_user, except: %i(index new create)
 
   def index
-    @users = User.newest.page(params[:page]).per(Settings.user_per)
+    @search = User.newest.ransack params[:q]
+    @users = @search.result.page(params[:page]).per(Settings.user_per)
   end
 
   def new
@@ -48,7 +49,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params.require(:user).permit :email, :fullname, :gender, :activated,
+    params.require(:user).permit :email, :fullname, :gender,
       :admin, :money, :password, :password_confirmation
   end
 end

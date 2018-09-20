@@ -2,7 +2,8 @@ class Admin::CountriesController < Admin::BaseController
   before_action :load_country, except: %i(index new create)
 
   def index
-    @countries = Country.newest.page(params[:page]).per Settings.country_per
+    @search = Country.newest.ransack params[:q]
+    @countries = @search.result.page(params[:page]).per Settings.country_per
   end
 
   def new

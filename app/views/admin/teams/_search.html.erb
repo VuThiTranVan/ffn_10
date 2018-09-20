@@ -1,0 +1,8 @@
+<%= search_form_for @search, url: admin_teams_path, class: "form-search row" do |f|%>
+  <div class="col-sm-10">
+    <%= f.search_field :name_or_address_cont, class: "form-control col-sm-10 right form_search", placeholder: t(".search_form") %>
+  </div>
+  <div class="col-sm-2">
+    <%= f.submit t(".btn_search"), class: "btn btn-info search-submit" %>
+  </div>
+<% end %>
